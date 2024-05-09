@@ -1,0 +1,14 @@
+C:\Users\ilija\source\repos\IQAirSP-Projekat1\IQAirSP-Projekat1\bin\Debug\net8.0\IQAirSP-Projekat1.exe
+C:\Users\ilija\source\repos\IQAirSP-Projekat1\IQAirSP-Projekat1\bin\Debug\net8.0\IQAirSP-Projekat1.deps.json
+C:\Users\ilija\source\repos\IQAirSP-Projekat1\IQAirSP-Projekat1\bin\Debug\net8.0\IQAirSP-Projekat1.runtimeconfig.json
+C:\Users\ilija\source\repos\IQAirSP-Projekat1\IQAirSP-Projekat1\bin\Debug\net8.0\IQAirSP-Projekat1.dll
+C:\Users\ilija\source\repos\IQAirSP-Projekat1\IQAirSP-Projekat1\bin\Debug\net8.0\IQAirSP-Projekat1.pdb
+C:\Users\ilija\source\repos\IQAirSP-Projekat1\IQAirSP-Projekat1\obj\Debug\net8.0\IQAirSP-Projekat1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ilija\source\repos\IQAirSP-Projekat1\IQAirSP-Projekat1\obj\Debug\net8.0\IQAirSP-Projekat1.AssemblyInfoInputs.cache
+C:\Users\ilija\source\repos\IQAirSP-Projekat1\IQAirSP-Projekat1\obj\Debug\net8.0\IQAirSP-Projekat1.AssemblyInfo.cs
+C:\Users\ilija\source\repos\IQAirSP-Projekat1\IQAirSP-Projekat1\obj\Debug\net8.0\IQAirSP-Projekat1.csproj.CoreCompileInputs.cache
+C:\Users\ilija\source\repos\IQAirSP-Projekat1\IQAirSP-Projekat1\obj\Debug\net8.0\IQAirSP-Projekat1.dll
+C:\Users\ilija\source\repos\IQAirSP-Projekat1\IQAirSP-Projekat1\obj\Debug\net8.0\refint\IQAirSP-Projekat1.dll
+C:\Users\ilija\source\repos\IQAirSP-Projekat1\IQAirSP-Projekat1\obj\Debug\net8.0\IQAirSP-Projekat1.pdb
+C:\Users\ilija\source\repos\IQAirSP-Projekat1\IQAirSP-Projekat1\obj\Debug\net8.0\IQAirSP-Projekat1.genruntimeconfig.cache
+C:\Users\ilija\source\repos\IQAirSP-Projekat1\IQAirSP-Projekat1\obj\Debug\net8.0\ref\IQAirSP-Projekat1.dll
