@@ -9,7 +9,7 @@ namespace IQAirSP_Projekat1
     public class Cache
     {
         private static readonly int capacity = 5;
-        private static readonly TimeSpan ttl = new TimeSpan(0, 0, 15);
+        private static readonly TimeSpan ttl = new TimeSpan(0, 0, 25);
         private static readonly ReaderWriterLockSlim cLock = new ReaderWriterLockSlim();
         private static readonly Dictionary<string, LinkedListNode<(string key, IQAir value, DateTime timestamp)>> cacheDictionary = new Dictionary<string, LinkedListNode<(string key, IQAir value, DateTime timestamp)>>();
         private static readonly LinkedList<(string key, IQAir value, DateTime timestamp)> lruList = new LinkedList<(string key, IQAir value, DateTime timestamp)>();
