@@ -15,7 +15,7 @@ class Program
     private static readonly string ApiBaseUrl = "http://api.airvisual.com/v2/city";
     private static readonly HttpClient http = new HttpClient();
 
-    static void Main()
+    static async Task Main()
     {
         // Http Listener
         var listener = new HttpListener();
@@ -27,13 +27,13 @@ class Program
         while (true)
         {
             //Osluskuje promeni i kada do nje dodje poziva Request
-            ThreadPool.QueueUserWorkItem(Request, listener.GetContext());
+            var context = await listener.GetContextAsync();
+            await Task.Run(() => Request(context));
         }
     }
 
-    static void Request(object state)
+    static async Task Request(HttpListenerContext context)
     {
-        var context = (HttpListenerContext)state;
         var request = context.Request;
         var response = context.Response;
 
@@ -46,18 +46,26 @@ class Program
         // Lockujemo Cache i pitamo da li se u cache-u vec nalazi taj request
         lock (Cache)
         {
-            if (Cache.Sadrzi(url))
+            try
             {
-                // Ako se request vec nalazi u cache-u, informacije pribavljamo iz cache-a
-                responseData = Cache.CitajIzKesa(url);
+                if (Cache.Sadrzi(url))
+                {
+                    // Ako se request vec nalazi u cache-u, informacije pribavljamo iz cache-a
+                    responseData = Cache.CitajIzKesa(url);
 
+                }
+                else
+                {
+                    // Ako se request ne nalazi u cache-u, informacije pribavljamo sa IQ Air sajta
+                    responseData = GetData(url).GetAwaiter().GetResult();
+                    if (responseData == null) return;
+                    Cache.UpisiUKes(url, responseData);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                // Ako se request ne nalazi u cache-u, informacije pribavljamo sa IQ Air sajta
-                responseData = GetData(url);
-                if (responseData == null) return;
-                Cache.UpisiUKes(url, responseData);
+                Console.WriteLine(ex.ToString());
+                return;
             }
         }
 
@@ -70,7 +78,7 @@ class Program
         response.OutputStream.Close();
     }
 
-    static IQAir GetData(string url)
+    static async Task<IQAir> GetData(string url)
     {
         // Pribavljamo uneti grad
         if (url.Contains("favicon")) return null;
@@ -101,7 +109,7 @@ class Program
                 // Proveravamo da li grad nalazi u centralnoj Srbiji
                 query = $"city={city}&state=Central Serbia&country=Serbia";
                 string apiUrl = $"{ApiBaseUrl}?{query}&key={ApiKey}";
-                webResponse = http.GetAsync(apiUrl).Result;
+                webResponse = await http.GetAsync(apiUrl);
 
                 if (!webResponse.IsSuccessStatusCode)
                 {
@@ -113,21 +121,16 @@ class Program
                 // Ako se ne nalazi u centralnoj Srbiji, nalazi se u Vojvodini
                 query = $"city={city}&state=Autonomna Pokrajina Vojvodina&country=Serbia";
                 string apiUrl = $"{ApiBaseUrl}?{query}&key={ApiKey}";
-                webResponse = http.GetAsync(apiUrl).Result;
+                webResponse = await http.GetAsync(apiUrl);
 
                 if (!webResponse.IsSuccessStatusCode)
                 {
                     throw new Exception(webResponse.StatusCode.ToString());
                 }
             }
-            using (var streamReader = new StreamReader(webResponse.Content.ReadAsStream()))
-            {
-                var responseText = streamReader.ReadToEnd();
-
-                // Parsiramo iz JSON-a u IQAir objekat i vracamo
-                IQAir responseObj = JsonSerializer.Deserialize<IQAir>(responseText);
-                return responseObj;
-            }
+            Stream webResponseStream = await webResponse.Content.ReadAsStreamAsync();
+            IQAir responseObj = await JsonSerializer.DeserializeAsync<IQAir>(webResponseStream);
+            return responseObj;
         }
         catch (Exception ex)
         {

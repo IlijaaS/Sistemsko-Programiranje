@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IQAirSP-Projekat1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7ffc5a5f4905333f332cabd59eb5c335d4f46663")]
 [assembly: System.Reflection.AssemblyProductAttribute("IQAirSP-Projekat1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IQAirSP-Projekat1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
