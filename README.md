@@ -17,3 +17,10 @@ http://api.airvisual.com/v2/city?city=Los%20Angeles&state=California&country=USA
 - Testirati njegov rad na sledeci nacin:
   - http://localhost:8080/?city={Grad}
 - Podrzava samo gradove iz Srbije, jer je za poziv svakog grada na svetu potrebno uneti i ime drzave kao i ime regije u kojoj se grad nalazi, pa zbog lakseg testiranja izbacili smo potrebu za svim ovim parametrima iz query-a
+
+## Projekat 2
+**Zadatak 21:**
+Unapredjena verzija projekta 1:
+- LRU algoritam za Cache sa dodatkom time to live (ako je proslo vise od 25s od dodavanja u cache, taj objekat se brise iz kesa)
+- Dodali smo asinhrone funkcije tamo gde je to moglo i imalo smisla
+
