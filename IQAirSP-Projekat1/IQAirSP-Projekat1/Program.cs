@@ -7,6 +7,8 @@ using System.Text.Encodings.Web;
 using System.Threading;
 using System.Text.Json;
 using IQAirSP_Projekat1;
+using System.Runtime.CompilerServices;
+using System.Diagnostics;
 class Program
 {
     // Inicijalizacija Cache-a, api kljuca i sajta
@@ -28,11 +30,11 @@ class Program
         {
             //Osluskuje promeni i kada do nje dodje poziva Request
             var context = await listener.GetContextAsync();
-            await Task.Run(() => Request(context));
+            _ = Task.Run(() => Request(context));
         }
     }
 
-    static async Task Request(HttpListenerContext context)
+    static async void Request(HttpListenerContext context)
     {
         var request = context.Request;
         var response = context.Response;
@@ -44,29 +46,32 @@ class Program
         IQAir responseData;
 
         // Lockujemo Cache i pitamo da li se u cache-u vec nalazi taj request
-        lock (Cache)
+        Stopwatch sw = new Stopwatch();
+        sw.Start();
+        try
         {
-            try
+            if (Cache.Sadrzi(url))
             {
-                if (Cache.Sadrzi(url))
-                {
-                    // Ako se request vec nalazi u cache-u, informacije pribavljamo iz cache-a
-                    responseData = Cache.CitajIzKesa(url);
-
-                }
-                else
-                {
-                    // Ako se request ne nalazi u cache-u, informacije pribavljamo sa IQ Air sajta
-                    responseData = GetData(url).GetAwaiter().GetResult();
-                    if (responseData == null) return;
-                    Cache.UpisiUKes(url, responseData);
-                }
+                // Ako se request vec nalazi u cache-u, informacije pribavljamo iz cache-a
+                responseData = Cache.CitajIzKesa(url);
+                sw.Stop();
+                Console.WriteLine($"Vreme potrebno za pribavljanje podataka iz cache-a: {sw.ElapsedMilliseconds}ms"); ;
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine(ex.ToString());
-                return;
+                // Ako se request ne nalazi u cache-u, informacije pribavljamo sa IQ Air sajta
+                responseData = GetData(url).GetAwaiter().GetResult();
+                if (responseData == null) return;
+                Cache.UpisiUKes(url, responseData);
+                sw.Stop();
+                Console.WriteLine($"Vreme potrebno za pribavljanje podataka bez upotrebe cache-a: {sw.ElapsedMilliseconds}ms"); ;
             }
+        }
+        catch (Exception ex)
+        {
+            sw.Stop();
+            Console.WriteLine(ex.ToString());
+            return;
         }
 
         // Prikaz korisniku na browseru
