@@ -42,6 +42,7 @@ class Program
         // Pokupljamo URL
         string url = request.Url.ToString();
         Console.WriteLine($"Request: {url}");
+        if (url.Contains("favicon")) return;
 
         IQAir responseData;
 
