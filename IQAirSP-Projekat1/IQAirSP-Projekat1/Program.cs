@@ -28,7 +28,7 @@ class Program
 
         while (true)
         {
-            //Osluskuje promeni i kada do nje dodje poziva Request
+            //Osluskuje promenu i kada do nje dodje poziva Request
             var context = await listener.GetContextAsync();
             _ = Task.Run(() => Request(context));
         }
@@ -63,9 +63,14 @@ class Program
                 // Ako se request ne nalazi u cache-u, informacije pribavljamo sa IQ Air sajta
                 responseData = GetData(url).GetAwaiter().GetResult();
                 if (responseData == null) return;
-                Cache.UpisiUKes(url, responseData);
+
+                if (responseData.status != "TooManyRequests")
+                {
+                    Cache.UpisiUKes(url, responseData);
+                }
+
                 sw.Stop();
-                Console.WriteLine($"Vreme potrebno za pribavljanje podataka bez upotrebe cache-a: {sw.ElapsedMilliseconds}ms"); ;
+                Console.WriteLine($"Vreme potrebno za pribavljanje podataka bez upotrebe cache-a: {sw.ElapsedMilliseconds}ms");
             }
         }
         catch (Exception ex)
@@ -140,7 +145,7 @@ class Program
         }
         catch (Exception ex)
         {
-            return new IQAir("Error: " + ex);
+            return new IQAir(ex.Message);
         }
     }
 }

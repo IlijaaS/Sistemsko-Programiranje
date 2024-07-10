@@ -38,6 +38,13 @@ namespace IQAirSP_Projekat1
                 htmlResponse += "<div><h2>" + "Vreme izmerenih parametara: " + responseObj.data.current.pollution.ts.ToLongDateString() + " " + responseObj.data.current.pollution.ts.ToLongTimeString() + "</h2></div></pre>";
                 htmlResponse += "</body></html>";
             }
+            else if(responseObj.status == "TooManyRequests")
+            {
+                htmlResponse += "div { text-align:center; }\nh1 { color: red; text-align:center; }\n </style></head><body>";
+                htmlResponse += "<div><h1>Air Pollution Data</h1></div>";
+                htmlResponse += "<div><h4>" + "Greska! TooManyRequests error." + "</h4></div></pre>";
+                htmlResponse += "</body></html>";
+            }
             else // ako je doslo do greske
             {
                 htmlResponse += "div { text-align:center; }\nh1 { color: red; text-align:center; }\n </style></head><body>";

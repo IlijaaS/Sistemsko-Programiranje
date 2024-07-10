@@ -5,10 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{BAEE02A2-8948-42B5-8B9B-C117D26E6F12}|IQAirSP-Projekat1\\IQAirSP-Projekat1.csproj|c:\\users\\ilija\\documents\\projects\\sistemsko-programiranje\\iqairsp-projekat1\\iqairsp-projekat1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BAEE02A2-8948-42B5-8B9B-C117D26E6F12}|IQAirSP-Projekat1\\IQAirSP-Projekat1.csproj|solutionrelative:iqairsp-projekat1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BAEE02A2-8948-42B5-8B9B-C117D26E6F12}|IQAirSP-Projekat1\\IQAirSP-Projekat1.csproj|C:\\Users\\ilija\\Documents\\Projects\\Sistemsko-Programiranje\\IQAirSP-Projekat1\\iqairsp-projekat1\\cache.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BAEE02A2-8948-42B5-8B9B-C117D26E6F12}|IQAirSP-Projekat1\\IQAirSP-Projekat1.csproj|solutionrelative:iqairsp-projekat1\\cache.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,16 +14,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 252,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:3:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -36,22 +24,19 @@
               "RelativeDocumentMoniker": "IQAirSP-Projekat1\\Program.cs",
               "ToolTip": "C:\\Users\\ilija\\Documents\\Projects\\Sistemsko-Programiranje\\IQAirSP-Projekat1\\IQAirSP-Projekat1\\Program.cs",
               "RelativeToolTip": "IQAirSP-Projekat1\\Program.cs",
-              "ViewState": "AQIAABwAAAAAAAAAAAAYwDgAAAAQAAAA",
+              "ViewState": "AQIAADwAAAAAAAAAAAAYwDUAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-31T20:47:58.58Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Cache.cs",
-              "DocumentMoniker": "C:\\Users\\ilija\\Documents\\Projects\\Sistemsko-Programiranje\\IQAirSP-Projekat1\\IQAirSP-Projekat1\\Cache.cs",
-              "RelativeDocumentMoniker": "IQAirSP-Projekat1\\Cache.cs",
-              "ToolTip": "C:\\Users\\ilija\\Documents\\Projects\\Sistemsko-Programiranje\\IQAirSP-Projekat1\\IQAirSP-Projekat1\\Cache.cs",
-              "RelativeToolTip": "IQAirSP-Projekat1\\Cache.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAxwEcAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T20:31:59.981Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
             }
           ]
         }
